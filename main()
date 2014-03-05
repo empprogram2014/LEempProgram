@@ -1,3 +1,11 @@
+showAllEmployees = 1
+showOneEmployee = 2
+addEmployee = 3
+deleteEmployee = 4
+promoteEmployee = 5
+changePayRate = 6
+quitProgram = 7
+
 def main():
     userChoice = False
     while userChoice == False:
