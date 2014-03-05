@@ -1,11 +1,12 @@
-showAllEmployees = 1
-showOneEmployee = 2
-addEmployee = 3
-deleteEmployee = 4
-promoteEmployee = 5
-changePayRate = 6
-quitProgram = 7
+SHOW_ALL_EMPLOYEES = 1
+SHOW_SPECIFIC_EMPLOYEE = 2
+ADD_EMPLOYEE = 3
+DELETE_EMPLOYEE = 4
+PROMOTE_EMPLOYEE = 5
+CHANGE_PAY_RATE = 6
+QUIT_PROGRAM = 7
 
+employeeRoster = open("C:\\Users\\ts.student\\Documents\\employeeroster.txt", 'r')
 def main():
     userChoice = False
     while userChoice == False:
@@ -25,25 +26,31 @@ def showMenu():
     print("Option 7: Quit program and write changes to file.")
 
 def accessMenu():
-    menuChoice = input("Enter the corresponding number of each option: ")
-    if menuChoice == "1":
+    menuChoice = int(input("Enter the corresponding number of each option: "))
+    if menuChoice == SHOW_ALL_EMPLOYEES:
         showAll()
-    elif menuChoice == "2":
+    elif menuChoice == SHOW_SPECIFIC_EMPLOYEE:
         showSpecific()
-    elif menuChoice == "3":
+    elif menuChoice == ADD_EMPLOYEE:
         hire()
-    elif menuChoice == "4":
+    elif menuChoice == DELETE_EMPLOYEE:
         fire()
-    elif menuChoice == "5":
+    elif menuChoice == PROMOTE_EMPLOYEE:
         promote()
-    elif menuChoice == "6":
+    elif menuChoice == CHANGE_PAY_RATE:
         giveRaise()
-    elif menuChoice == "7":
+    elif menuChoice == QUIT_PROGRAM:
         return True
     else:
         print("Invalid Input")
         print("")
         return False
+        
+def showAll():
+    for person in employeeRoster:
+        print(person)
+    
+
 
 
 
