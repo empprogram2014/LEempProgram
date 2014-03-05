@@ -44,10 +44,6 @@ def accessMenu():
         print("Invalid Input")
         print("")
         return False
-        
-def showAll():
-    print("derp")
-
 
 
 
