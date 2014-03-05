@@ -4,9 +4,9 @@ def showEmployee(empid):
     print(employees.get(empid))
 
 def addEmployee(empid, firstName, Lastname, job, payRate):
-    employees[empid] = {empid: empid
-                        firstName: firstName
-                        LastName: lastName
-                        job: Job
-                        payRate: payRate
+    employees[empid] = {'empid': empid
+                        'firstName': firstName
+                        'LastName': lastName
+                        'job': Job
+                        'payRate': payRate
                         }
