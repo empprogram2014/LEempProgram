@@ -1,0 +1,51 @@
+def main():
+    userChoice = False
+    while userChoice == False:
+        showMenu()
+        userChoice = accessMenu()
+    
+
+
+def showMenu():
+    print("Please choose from the following options.")
+    print("Option 1: Show information of all employees.")
+    print("Option 2: Show information of specific employee.")
+    print("Option 3: Add an employee to database.")
+    print("Option 4: Delete an employee from database.")
+    print("Option 5: Promote an employee in the database.")
+    print("Option 6: Change the pay rate of an employee.")
+    print("Option 7: Quit program and write changes to file.")
+
+def accessMenu():
+    menuChoice = input("Enter the corresponding number of each option: ")
+    if menuChoice == "1":
+        showAll()
+    elif menuChoice == "2":
+        showSpecific()
+    elif menuChoice == "3":
+        hire()
+    elif menuChoice == "4":
+        fire()
+    elif menuChoice == "5":
+        promote()
+    elif menuChoice == "6":
+        giveRaise()
+    elif menuChoice == "7":
+        return True
+    else:
+        print("Invalid Input")
+        print("")
+        return False
+        
+def showAll():
+    print("derp")
+
+
+
+
+
+
+
+
+
+main()
