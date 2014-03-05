@@ -1,0 +1,48 @@
+empData = {}
+
+def addEmployee():
+    employeeID = input('Please enter the employee ID: ')
+    employeeName = []
+    employeeFirstName = input("Enter the employee's first name: ")
+    employeeLastName = input("Enter the employee's last name: ")
+    employeePosition = input("Enter the employee's position: ")
+    employeePay = input('Enter the payrate for the employee (per hour): ')
+    
+
+    empData[employeeID] = {'EMP_ID': employeeID, 
+                      'FIRST_NAME': employeeFirstName,
+                      'LAST_NAME': employeeLastName,
+                      'JOB': employeePosition,
+                      'PAY_RATE': employeePay}
+    print(empData.values())
+    
+    return empData[employeeID],employeeID
+
+
+def removeEmployee():
+    while True:
+        getKeyDel = input("please enter the employee ID, if unsure, enter ALL to see all employees. ")
+        if getKeyDel == 'ALL':
+            print(empData.values())
+        elif getKeyDel == '':
+            try:
+                print("Employee: ", empData[getKeyDel])
+            except KeyError:
+                print('Employee not found')
+                
+
+
+def Build_DataBase(empData,empID):
+    empDataBase = {}
+    empDataBase[empID] = {'Emp':empData}
+    print(empData.values())
+    return empDataBase[empID]
+
+def main():
+    newEmployee,empID = addEmployee()
+    empData = Build_DataBase(newEmployee,empID)
+    
+    print(empData.items())
+    
+    
+main()
