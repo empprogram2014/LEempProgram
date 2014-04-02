@@ -1,0 +1,52 @@
+from employee import Employee
+SHOW_ALL_EMPLOYEES = 1
+SHOW_SPECIFIC_EMPLOYEE = 2
+ADD_EMPLOYEE = 3
+DELETE_EMPLOYEE = 4
+PROMOTE_EMPLOYEE = 5
+CHANGE_PAY_RATE = 6
+QUIT_PROGRAM = 7
+
+employeeRoster = open("employeeroster.txt", 'r')
+def main():
+    userChoice = False
+    while userChoice == False:
+        showMenu()
+        userChoice = accessMenu()
+    
+
+
+def showMenu():
+    print("Please choose from the following options.")
+    print("Option 1: Show information of all employees.")
+    print('''Option 2: edit employee.
+Option 3: Quit.''')
+
+def accessMenu():
+    menuChoice = int(input("Enter the corresponding number of each option: "))
+    if menuChoice == SHOW_ALL_EMPLOYEES:
+        showAll()
+    elif menuChoice == EDIT_EMPLOYEE:
+         editEmployee()
+    elif menuChoice == QUIT_PROGRAM:
+        return True
+    else:
+        print("Invalid Input")
+        print("")
+        return False
+        
+def showAll():
+    for person in employeeRoster:
+        print(person)
+    
+
+
+
+
+
+
+
+
+
+main()
+
