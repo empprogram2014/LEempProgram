@@ -1,0 +1,55 @@
+stock_a = 0
+personal_finances = 0
+total_stocks_owned = 0
+
+
+def main():
+    for week in range(1, 21):
+        choice = False
+        print()
+        print("Week", week)
+        while choice is not True:
+            show_financial_information()
+            show_option_menu()
+            option = menu_options()
+            if option == 1:
+                check_stock()
+            elif option == 2:
+                buy_stock()
+            elif option == 3:
+                sell_stock()
+            elif option == 4:
+                choice = True
+            else:
+                print("Invalid Input")
+
+
+def show_financial_information():
+    
+    print("--------------------------------------------------------------------------------")
+    print("Personal Finances:", personal_finances, "\t\tTotal Stocks Currently Owned:", total_stocks_owned)
+    print("stock a:", stock_a)
+    print("-------------------------------------------------------------------------------")
+
+
+def show_option_menu():
+    print("Please choose from the following options:")
+    print("Option 1) Check Current Stock Prices")
+    print("Option 2) Buy Stock")
+    print("Option 3) Sell Stock")
+    print("Option 4) End Week")
+
+def menu_options():
+    chosen_option = int(input("Your choice: "))
+    return chosen_option
+
+def check_stock():
+    print("Put proper function here")
+
+def buy_stock():
+    print("Put proper function here")
+
+def sell_stock():
+    print("Put proper function here")
+
+main()
