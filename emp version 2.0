@@ -1,0 +1,134 @@
+from employee import Employee
+import pickle
+import random
+
+EMPLOYEE_ROSTER = 'employeeroster.txt'
+
+SHOW_ALL_EMPLOYEES = 1
+ADD_EMPLOYEE = 2
+EDIT_EMPLOYEE = 3
+QUIT_PROGRAM = 7
+
+DELETE_EMPLOYEE = 4
+PROMOTE_EMPLOYEE = 5
+CHANGE_PAY_RATE = 6
+
+
+MANAGER = 'M'
+EMPLOYEE = 'E'
+MANAGER_PAY = 10.00
+EMPLOYEE_PAY = 9.00
+EMPLOYEE_ID_MAX = 10**7
+EMPLOYEE_ID_MIN = 10**6
+
+DILIMETER = {',':'\t\t'}
+
+def main():
+    '''Menu help, Show All Employees imports a list of all Employees,
+Add Employee, creates a new employees and saves the info,
+Edit Employee, Allows you to change an employee's information or delete an employee
+Quit, Ends the program.'''
+
+    userChoice = False
+    while userChoice == False:
+        showMenu()
+        userChoice = accessMenu()
+def newEmployee():
+    allEmployees = []
+    try:
+        allEmployees = loadData()
+    except EOFError:
+        pass
+    
+    
+    firstName = input('First Name of New Employee: ')
+    lastName = input('Last Name of Employee: ')
+    employeeID = getRandomID(lastName)
+    employmentStatus = 'E'
+    position = str(input('Enter the Employee Position:'))
+    payRate = 0
+    if position == 'M':
+        payRate = MANAGER_PAY
+    elif position == 'E':
+        payRate = EMPLOYEE_PAY
+
+    
+    newEmployee = Employee(firstName, lastName,employeeID, employmentStatus, payRate, position)
+    newEmployee = str(newEmployee)
+    newEmployee = newEmployee + '\n'
+    
+    allEmployees.append(newEmployee)
+    saveData(allEmployees)
+
+def getRandomID(lastName):
+    employeeID = random.randint(EMPLOYEE_ID_MIN, EMPLOYEE_ID_MAX)
+    employeeID = str(employeeID)
+    employeeID = employeeID + lastName[:3]
+    return employeeID
+    
+    
+def saveData(allEmployees):
+    dataFile = open(EMPLOYEE_ROSTER, 'wb')
+    pickle.dump(allEmployees, dataFile)
+    dataFile.close()
+    print('Info Saved to Database')
+    
+def loadData():
+    
+    with open(EMPLOYEE_ROSTER, 'rb') as dataFile:
+        allEmployees = pickle.load(dataFile)
+    return allEmployees
+
+def showMenu():
+    print("Please choose from the following options.")
+    print("Option 1: Show information of all employees.")
+    print('''Option 2: New employee.
+Option 3: Edit Employee
+
+Option 7: Quit.''')
+
+
+def accessMenu():
+
+    
+    while True:
+        menuChoice = 0
+        try:
+            menuChoice = int(input("Enter the corresponding number of each option: "))
+        except ValueError:
+            print("Numbers Only!")
+        if menuChoice == SHOW_ALL_EMPLOYEES:
+            showAll()
+        elif menuChoice == ADD_EMPLOYEE:
+            newEmployee()
+        elif menuChoice == EDIT_EMPLOYEE:
+            editEmployee()
+        elif menuChoice == QUIT_PROGRAM:
+            return True
+        else:
+            print("Invalid Input")
+            print("")
+            return False
+
+def showAll():
+    allEmployees = loadData()
+    tableHeader ='First\t\t Last\t\t ID\t Employement Status\t Pay Rate\t Position'
+    employee = ''
+            
+    for employeeData in allEmployees:
+        employeeData = str(employeeData)
+        for char in employeeData[0:]:
+            try:
+                employee += DILIMETER[char]
+            except KeyError:
+                employee += char
+
+    print(tableHeader)
+    print(employee)
+    
+
+
+        
+        
+
+main()
