@@ -1,34 +1,27 @@
-import random
-
 class Employee:
-    def __init__(self, fName, lName, empID, employmentStatus, payRate, position):
+    def __init__(self, fName, lName,empID, employmentStatus, payRate, position):
         self.fName = fName
         self.lName = lName
         self.empID = empID
         self.employmentStatus = employmentStatus
         self.payRate = payRate
         self.position = position
-
+        
+        
     def terminate(self):
         self.employmentStatus = 'I'
         
 
     def promote(self):
         self.position = 'M'
-        self.payRate = 9.99
+        self.payRate = 10
         print('{0},{1} has been promoted'.format(self.lName, self.fName))
 
-
+            
     def getFullName(self):
         return 'first name {0}, last name {1}'.format(self.fName, self.lName)
-
-
+    
+        
     def __str__(self):
-        return 'first name = {0} \nlast name = {1} \nemployee id = {2} \nemployment status = {3} \n pay rate = {4} \n position = {5}'.format(self.fName,
-                                                                                                                                            self.lName,
-                                                                                                                                            self.empID,
-                                                                                                                                            self.employmentStatus,
-                                                                                                                                            self.payRate,
-                                                                                                                                            self.position)
-        
-        
+        return '''{0},{1},{2},{3},{4},{5},'''.format(self.fName,self.lName,self.empID,self.employmentStatus,self.payRate,self.position)
+    
