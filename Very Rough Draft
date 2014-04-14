@@ -1,9 +1,12 @@
-stock_a = 0
-personal_finances = 0
-total_stocks_owned = 0
+STOCK_A_PRICE = 100
+STOCK_B_PRICE = 20
 
 
 def main():
+    stock_a = 0
+    stock_b = 0
+    personal_finances = 10000
+    total_stocks_owned = 0
     for week in range(1, 21):
         choice = False
         print()
@@ -13,12 +16,10 @@ def main():
             show_option_menu()
             option = menu_options()
             if option == 1:
-                check_stock()
+                personal_finances, stock_a, stock_b, total_stocks_owned = buy_stock()
             elif option == 2:
-                buy_stock()
+                personal_finances, stock_a, stock_b, total_stocks_owned = sell_stock()
             elif option == 3:
-                sell_stock()
-            elif option == 4:
                 choice = True
             else:
                 print("Invalid Input")
@@ -27,27 +28,27 @@ def main():
 def show_financial_information():
     
     print("--------------------------------------------------------------------------------")
-    print("Personal Finances:", personal_finances, "\t\tTotal Stocks Currently Owned:", total_stocks_owned)
+    print("Personal Finances: $", personal_finances, "\t\tTotal Stocks Currently Owned:", total_stocks_owned)
     print("stock a:", stock_a)
     print("-------------------------------------------------------------------------------")
 
 
 def show_option_menu():
     print("Please choose from the following options:")
-    print("Option 1) Check Current Stock Prices")
-    print("Option 2) Buy Stock")
-    print("Option 3) Sell Stock")
-    print("Option 4) End Week")
+    print("Option 1) Buy Stock")
+    print("Option 2) Sell Stock")
+    print("Option 3) End Week")
 
 def menu_options():
     chosen_option = int(input("Your choice: "))
     return chosen_option
 
-def check_stock():
-    print("Put proper function here")
-
 def buy_stock():
-    print("Put proper function here")
+    print("--------------------------------------------------------------------------------")
+    print("Price of Stock A: $", STOCK_A_PRICE, "\t\tPrice of Stock B: $", STOCK_B_PRICE)
+    print("--------------------------------------------------------------------------------")
+    print("What stock would you like to buy?")
+    
 
 def sell_stock():
     print("Put proper function here")
