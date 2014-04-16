@@ -1,3 +1,5 @@
+
+
 STOCK_A_PRICE = 100
 STOCK_B_PRICE = 20
 
@@ -59,10 +61,16 @@ def buy_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
         stock_choice = int(input("Your choice: "))
         if stock_choice == 1:
             amount_wanted = int(input("How much of Stock A do you want to buy: "))
-            personal_finances, stock_a, total_stocks_owned = buyStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
+            if (amount_wanted * STOCK_A_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_a, total_stocks_owned = buyStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
         elif stock_choice == 2:
             amount_wanted = int(input("How much of Stock B do you want to buy: "))
-            personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
         elif stock_choice == 3:
             go_back = True
         else:
@@ -84,10 +92,16 @@ def sell_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
         stock_choice = int(input("Your choice: "))
         if stock_choice == 1:
             amount_wanted = int(input("How much of Stock A do you want to sell: "))
-            personal_finances, stock_a, total_stocks_owned = sellStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
+            if amount_wanted > stock_a:
+                print("That's more of Stock A than you own.")
+            else:
+                personal_finances, stock_a, total_stocks_owned = sellStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
         elif stock_choice == 2:
             amount_wanted = int(input("How much of Stock B do you want to sell: "))
-            personal_finances, stock_b, total_stocks_owned = sellStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+            if amount_wanted > stock_b:
+                print("That's more of Stock B than you own.")
+            else:
+                personal_finances, stock_b, total_stocks_owned = sellStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
         elif stock_choice == 3:
             go_back = True
         else:
