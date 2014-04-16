@@ -27,7 +27,7 @@ def main():
                 print("Invalid Input")
 
 
-def show_financial_information():
+def show_financial_information(personal_finances, total_stocks_owned, stock_a, stock_b):
     
     print("--------------------------------------------------------------------------------")
     print("Personal Finances: $", personal_finances, "\t\tTotal Stocks Currently Owned:", total_stocks_owned)
