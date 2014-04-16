@@ -66,6 +66,7 @@ def buy_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
             go_back = True
             
 def sell_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
+    go_back = False
     while go_back == False:
         print("--------------------------------------------------------------------------------")
         print("Price of Stock A: $", STOCK_A_PRICE, "\t\tPrice of Stock B: $", STOCK_B_PRICE)
