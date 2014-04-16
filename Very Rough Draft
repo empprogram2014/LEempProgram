@@ -91,4 +91,28 @@ def sell_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
             print("Invalid Input")
     return personal_finances, stock_a, stock_b, total_stocks_owned
 
+    def buyStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE):
+        stock_a += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * STOCK_A_PRICE)
+        return personal_finances, stock_a, total_stocks_owned
+
+    def sellStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE):
+        stock_a -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * STOCK_A_PRICE)
+        return personal_finances, stock_a, total_stocks_owned
+
+    def buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE):
+        stock_b += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (smount_wanted * Stock_B_Price)
+        return personal_finances, stock_b, total_stocks_owned
+
+    def sellStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE):
+        stock_b -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (smount_wanted * Stock_B_Price)
+        return personal_finances, stock_b, total_stocks_owned
+
 main()
