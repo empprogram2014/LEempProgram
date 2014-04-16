@@ -1,4 +1,4 @@
-import stockBroker
+
 
 STOCK_A_PRICE = 100
 STOCK_B_PRICE = 20
@@ -11,16 +11,49 @@ def main():
     total_stocks_owned = 0
     for week in range(1, 21):
         choice = False
-        print()
-        print("Week", week)
+        
         while choice is not True:
-            show_financial_information()
+            print()
+            print("Week", week)
+            show_financial_information(personal_finances, total_stocks_owned, stock_a, stock_b)
             show_option_menu()
             option = menu_options()
             if option == 1:
                 personal_finances, stock_a, stock_b, total_stocks_owned = buy_stock(personal_finances, stock_a, stock_b, total_stocks_owned)
             elif option == 2:
-                personal_finances, stock_a, stock_b, total_stocks_owned = sell_stock()
+                personal_finances, stock_a, stock_b, total_stocks_owned = sell_stock(personal_finances, stock_a, stock_b, total_stocks_owned)
+            elif option == 3:
+                choice = True
+            else:
+                print("Invalid Input")
+
+
+def show_financial_information(personal_finances, total_stocks_owned, stock_a, stock_b):
+    
+    print
+
+STOCK_A_PRICE = 100
+STOCK_B_PRICE = 20
+
+
+def main():
+    stock_a = 0
+    stock_b = 0
+    personal_finances = 10000.00
+    total_stocks_owned = 0
+    for week in range(1, 21):
+        choice = False
+        
+        while choice is not True:
+            print()
+            print("Week", week)
+            show_financial_information(personal_finances, total_stocks_owned, stock_a, stock_b)
+            show_option_menu()
+            option = menu_options()
+            if option == 1:
+                personal_finances, stock_a, stock_b, total_stocks_owned = buy_stock(personal_finances, stock_a, stock_b, total_stocks_owned)
+            elif option == 2:
+                personal_finances, stock_a, stock_b, total_stocks_owned = sell_stock(personal_finances, stock_a, stock_b, total_stocks_owned)
             elif option == 3:
                 choice = True
             else:
@@ -58,10 +91,10 @@ def buy_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
         stock_choice = int(input("Your choice: "))
         if stock_choice == 1:
             amount_wanted = int(input("How much of Stock A do you want to buy: "))
-            personal_finances, stock_a, total_stocks_owned = stockBroker.buyStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
+            personal_finances, stock_a, total_stocks_owned = buyStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
         elif stock_choice == 2:
             amount_wanted = int(input("How much of Stock B do you want to buy: "))
-            personal_finances, stock_b, total_stocks_owned = stockBroker.buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+            personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
         elif stock_choice == 3:
             go_back = True
         else:
@@ -81,38 +114,125 @@ def sell_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
         stock_choice = int(input("Your choice: "))
         if stock_choice == 1:
             amount_wanted = int(input("How much of Stock A do you want to sell: "))
-            personal_finances, stock_a, total_stocks_owned = stockBroker.sellStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
+            personal_finances, stock_a, total_stocks_owned = sellStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
         elif stock_choice == 2:
             amount_wanted = int(input("How much of Stock B do you want to sell: "))
-            personal_finances, stock_b, total_stocks_owned = stockBroker.sellStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+            personal_finances, stock_b, total_stocks_owned = sellStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
         elif stock_choice == 3:
             go_back = True
         else:
             print("Invalid Input")
     return personal_finances, stock_a, stock_b, total_stocks_owned
 
-    def buyStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE):
+def buyStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE):
         stock_a += amount_wanted
         total_stocks_owned += amount_wanted
         personal_finances -= (amount_wanted * STOCK_A_PRICE)
         return personal_finances, stock_a, total_stocks_owned
 
-    def sellStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE):
+def sellStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE):
         stock_a -= amount_wanted
         total_stocks_owned -= amount_wanted
         personal_finances += (amount_wanted * STOCK_A_PRICE)
         return personal_finances, stock_a, total_stocks_owned
 
-    def buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE):
+def buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE):
         stock_b += amount_wanted
         total_stocks_owned += amount_wanted
-        personal_finances -= (smount_wanted * Stock_B_Price)
+        personal_finances -= (amount_wanted * STOCK_B_PRICE)
         return personal_finances, stock_b, total_stocks_owned
 
-    def sellStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE):
+def sellStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE):
         stock_b -= amount_wanted
         total_stocks_owned -= amount_wanted
-        personal_finances += (smount_wanted * Stock_B_Price)
+        personal_finances += (amount_wanted * STOCK_B_PRICE)
+        return personal_finances, stock_b, total_stocks_owned
+
+main()
+("--------------------------------------------------------------------------------")
+    print("Personal Finances: $", personal_finances, "\t\tTotal Stocks Currently Owned:", total_stocks_owned)
+    print("Stock A:", stock_a, "\t\tStock B:", stock_b)
+    print("-------------------------------------------------------------------------------")
+
+
+def show_option_menu():
+    print("Please choose from the following options:")
+    print("Option 1) Buy Stock")
+    print("Option 2) Sell Stock")
+    print("Option 3) End Week")
+
+def menu_options():
+    chosen_option = int(input("Your choice: "))
+    return chosen_option
+
+def buy_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
+    go_back = False
+    while go_back == False:
+        print("--------------------------------------------------------------------------------")
+        print("Price of Stock A: $", STOCK_A_PRICE, "\t\tPrice of Stock B: $", STOCK_B_PRICE)
+        print("--------------------------------------------------------------------------------")
+        print("What stock would you like to buy?")
+        print("1) Stock A")
+        print("2) Stock B")
+        print("3) Go back to main menu.")
+        stock_choice = int(input("Your choice: "))
+        if stock_choice == 1:
+            amount_wanted = int(input("How much of Stock A do you want to buy: "))
+            personal_finances, stock_a, total_stocks_owned = buyStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
+        elif stock_choice == 2:
+            amount_wanted = int(input("How much of Stock B do you want to buy: "))
+            personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 3:
+            go_back = True
+        else:
+            print("Invalid Input")
+    return personal_finances, stock_a, stock_b, total_stocks_owned
+            
+def sell_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
+    go_back = False
+    while go_back == False:
+        print("--------------------------------------------------------------------------------")
+        print("Price of Stock A: $", STOCK_A_PRICE, "\t\tPrice of Stock B: $", STOCK_B_PRICE)
+        print("--------------------------------------------------------------------------------")
+        print("What stock would you like to sell?")
+        print("1) Stock A")
+        print("2) Stock B")
+        print("3) Go back to main menu.")
+        stock_choice = int(input("Your choice: "))
+        if stock_choice == 1:
+            amount_wanted = int(input("How much of Stock A do you want to sell: "))
+            personal_finances, stock_a, total_stocks_owned = sellStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
+        elif stock_choice == 2:
+            amount_wanted = int(input("How much of Stock B do you want to sell: "))
+            personal_finances, stock_b, total_stocks_owned = sellStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 3:
+            go_back = True
+        else:
+            print("Invalid Input")
+    return personal_finances, stock_a, stock_b, total_stocks_owned
+
+def buyStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE):
+        stock_a += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * STOCK_A_PRICE)
+        return personal_finances, stock_a, total_stocks_owned
+
+def sellStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE):
+        stock_a -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * STOCK_A_PRICE)
+        return personal_finances, stock_a, total_stocks_owned
+
+def buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE):
+        stock_b += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * STOCK_B_PRICE)
+        return personal_finances, stock_b, total_stocks_owned
+
+def sellStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE):
+        stock_b -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * STOCK_B_PRICE)
         return personal_finances, stock_b, total_stocks_owned
 
 main()
