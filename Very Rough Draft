@@ -1,12 +1,29 @@
 
 
+
 STOCK_A_PRICE = 100
 STOCK_B_PRICE = 20
 
 
 def main():
-    stock_a = 0
-    stock_b = 0
+    SIRI = 0
+    FB = 0
+    BBRY = 0
+    MU = 0
+    MSFT = 0
+    QQQ = 0
+    FCEL = 0
+    INTC = 0
+    ZNGA = 0
+    EXEL = 0
+    GILD = 0
+    CMCSA = 0
+    YHOO = 0
+    GRPN = 0
+    ACAS = 0
+    FTR = 0
+    AMAT = 0
+    TSLA = 0
     personal_finances = 10000.00
     total_stocks_owned = 0
     for week in range(1, 21):
@@ -32,7 +49,16 @@ def show_financial_information(personal_finances, total_stocks_owned, stock_a, s
     
     print("--------------------------------------------------------------------------------")
     print("Personal Finances: $", personal_finances, "\t\tTotal Stocks Currently Owned:", total_stocks_owned)
-    print("Stock A:", stock_a, "\t\tStock B:", stock_b)
+    print("SIRI Stock:", SIRI, "\t\tFB Stock:", FB)
+    print("BBRY Stock:", BBRY, "\t\tMU Stock:", MU)
+    print("MSFT Stock:", MSFT, "\t\tQQQ Stock:", QQQ)
+    print("MNKD Stock:", MNKD, "\t\tCSCO Stock:", CSCO)
+    print("FCEL Stock:", FCEL, "\t\tINTC Stock:", INTC)
+    print("ZNGA Stock:", ZNGA, "\t\tEXEL Stock:", EXEL)
+    print("GILD Stock:", GILD, "\t\tCMCSA Stock:", CMCSA)
+    print("YHOO Stock:", YHOO, "\t\tGRPN Stock:", GRPN)
+    print("ACAS Stock:", ACAS, "\t\tFTR Stock:", FTR)
+    print("AMAT Stock:", AMAT, "\t\tTSLA Stock:", TSLA)
     print("-------------------------------------------------------------------------------")
 
 
@@ -51,27 +77,161 @@ def buy_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
     while go_back == False:
         print("--------------------------------------------------------------------------------")
         print("Personal Finances: $", personal_finances, "\t\tTotal Stocks Currently Owned:", total_stocks_owned)
-        print("Stock A:", stock_a, "\t\tStock B:", stock_b)
-        print("Price of Stock A: $", STOCK_A_PRICE, "\t\tPrice of Stock B: $", STOCK_B_PRICE)
-        print("--------------------------------------------------------------------------------")
+        print("SIRI Stock:", SIRI, "\t\tFB Stock:", FB)
+        print("BBRY Stock:", BBRY, "\t\tMU Stock:", MU)
+        print("MSFT Stock:", MSFT, "\t\tQQQ Stock:", QQQ)
+        print("MNKD Stock:", MNKD, "\t\tCSCO Stock:", CSCO)
+        print("FCEL Stock:", FCEL, "\t\tINTC Stock:", INTC)
+        print("ZNGA Stock:", ZNGA, "\t\tEXEL Stock:", EXEL)
+        print("GILD Stock:", GILD, "\t\tCMCSA Stock:", CMCSA)
+        print("YHOO Stock:", YHOO, "\t\tGRPN Stock:", GRPN)
+        print("ACAS Stock:", ACAS, "\t\tFTR Stock:", FTR)
+        print("AMAT Stock:", AMAT, "\t\tTSLA Stock:", TSLA)
+        print("-------------------------------------------------------------------------------")
         print("What stock would you like to buy?")
-        print("1) Stock A")
-        print("2) Stock B")
-        print("3) Go back to main menu.")
+        print("1) SIRI Stock")
+        print("2) FB Stock")
+        print("3) BBRY Stock")
+        print("4) MU Stock")
+        print("5) MSFT Stock")
+        print("6) QQQ Stock")
+        print("7) MNKD Stock")
+        print("8) CSCO Stock")
+        print("9) FCEL Stock")
+        print("10) INTC Stock")
+        print("11) ZNGA Stock")
+        print("12) EXEL Stock")
+        print("13) GILD Stock")
+        print("14) CMCSA Stock")
+        print("15) YHOO Stock")
+        print("16) GRPN Stock")
+        print("17) ACAS Stock")
+        print("18) FTR Stock")
+        print("19) AMAT Stock")
+        print("20) TSLA Stock")
+        print("21) Go back to main menu.")
         stock_choice = int(input("Your choice: "))
         if stock_choice == 1:
-            amount_wanted = int(input("How much of Stock A do you want to buy: "))
-            if (amount_wanted * STOCK_A_PRICE) > personal_finances:
+            amount_wanted = int(input("How much of SIRI do you want to buy: "))
+            if (amount_wanted * SIRI_price) > personal_finances:
                 print("Insufficient Funds")
             else:
-                personal_finances, stock_a, total_stocks_owned = buyStockA(amount_wanted, personal_finances, stock_a, total_stocks_owned, STOCK_A_PRICE)
+                personal_finances, SIRI, total_stocks_owned = buySIRI(amount_wanted, personal_finances, SIR, total_stocks_owned, SIRI_price)
         elif stock_choice == 2:
-            amount_wanted = int(input("How much of Stock B do you want to buy: "))
+            amount_wanted = int(input("How much of FB do you want to buy: "))
+            if (amount_wanted * FB_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, FB, total_stocks_owned = buyFB(amount_wanted, personal_finances, FB, total_stocks_owned, FB_price)
+        elif stock_choice == 3:
+            amount_wanted = int(input("How much of BBRY do you want to buy: "))
+            if (amount_wanted * BBRY_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, BBRY, total_stocks_owned = buyBBRY(amount_wanted, personal_finances, BBRY, total_stocks_owned, BBRY_price)
+        elif stock_choice == 4:
+            amount_wanted = int(input("How much of MU do you want to buy: "))
+            if (amount_wanted * MU_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, MU, total_stocks_owned = buyMU(amount_wanted, personal_finances, MU, total_stocks_owned, MU_price)
+        elif stock_choice == 5:
+            amount_wanted = int(input("How much of MSFT do you want to buy: "))
+            if (amount_wanted * MSFT_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, MSFT, total_stocks_owned = buyMSFT(amount_wanted, personal_finances, MSFT, total_stocks_owned, MSFT_price)
+        elif stock_choice == 6:
+            amount_wanted = int(input("How much of QQQ do you want to buy: "))
+            if (amount_wanted * QQQ_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, QQQ, total_stocks_owned = buyStockB(amount_wanted, personal_finances, QQQ, total_stocks_owned, QQQ_price)
+        elif stock_choice == 7:
+            amount_wanted = int(input("How much of MNKD do you want to buy: "))
+            if (amount_wanted * MNKD_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, MNKD, total_stocks_owned = buyStockB(amount_wanted, personal_finances, MNKD, total_stocks_owned, MNKD_price)
+        elif stock_choice == 8:
+            amount_wanted = int(input("How much of CSCO do you want to buy: "))
+            if (amount_wanted * CSCO_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, CSCO, total_stocks_owned = buyStockB(amount_wanted, personal_finances, CSCO, total_stocks_owned, CSCO_price)
+        elif stock_choice == 9:
+            amount_wanted = int(input("How much of FCEL do you want to buy: "))
+            if (amount_wanted * FCEL_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, FCEL, total_stocks_owned = buyStockB(amount_wanted, personal_finances, FCEL, total_stocks_owned, FCEL_price)
+        elif stock_choice == 10:
+            amount_wanted = int(input("How much of INTC do you want to buy: "))
             if (amount_wanted * STOCK_B_PRICE) > personal_finances:
                 print("Insufficient Funds")
             else:
                 personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
-        elif stock_choice == 3:
+        elif stock_choice == 11:
+            amount_wanted = int(input("How much of ZNGA do you want to buy: "))
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 12:
+            amount_wanted = int(input("How much of EXEL do you want to buy: "))
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 13:
+            amount_wanted = int(input("How much of GILD do you want to buy: "))
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 14:
+            amount_wanted = int(input("How much of CMCSA do you want to buy: "))
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 15:
+            amount_wanted = int(input("How much of YHOO do you want to buy: "))
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 16:
+            amount_wanted = int(input("How much of GRPN do you want to buy: "))
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 17:
+            amount_wanted = int(input("How much of ACAS do you want to buy: "))
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 18:
+            amount_wanted = int(input("How much of FTR do you want to buy: "))
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 19:
+            amount_wanted = int(input("How much of AMAT do you want to buy: "))
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 20:
+            amount_wanted = int(input("How much of TSLA do you want to buy: "))
+            if (amount_wanted * STOCK_B_PRICE) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, stock_b, total_stocks_owned = buyStockB(amount_wanted, personal_finances, stock_b, total_stocks_owned, STOCK_B_PRICE)
+        elif stock_choice == 21:
             go_back = True
         else:
             print("Invalid Input")
@@ -82,9 +242,17 @@ def sell_stock(personal_finances, stock_a, stock_b, total_stocks_owned):
     while go_back == False:
         print("--------------------------------------------------------------------------------")
         print("Personal Finances: $", personal_finances, "\t\tTotal Stocks Currently Owned:", total_stocks_owned)
-        print("Stock A:", stock_a, "\t\tStock B:", stock_b)
-        print("Price of Stock A: $", STOCK_A_PRICE, "\t\tPrice of Stock B: $", STOCK_B_PRICE)
-        print("--------------------------------------------------------------------------------")
+        print("SIRI Stock:", SIRI, "\t\tFB Stock:", FB)
+        print("BBRY Stock:", BBRY, "\t\tMU Stock:", MU)
+        print("MSFT Stock:", MSFT, "\t\tQQQ Stock:", QQQ)
+        print("MNKD Stock:", MNKD, "\t\tCSCO Stock:", CSCO)
+        print("FCEL Stock:", FCEL, "\t\tINTC Stock:", INTC)
+        print("ZNGA Stock:", ZNGA, "\t\tEXEL Stock:", EXEL)
+        print("GILD Stock:", GILD, "\t\tCMCSA Stock:", CMCSA)
+        print("YHOO Stock:", YHOO, "\t\tGRPN Stock:", GRPN)
+        print("ACAS Stock:", ACAS, "\t\tFTR Stock:", FTR)
+        print("AMAT Stock:", AMAT, "\t\tTSLA Stock:", TSLA)
+        print("-------------------------------------------------------------------------------")
         print("What stock would you like to sell?")
         print("1) Stock A")
         print("2) Stock B")
