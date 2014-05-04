@@ -1,0 +1,430 @@
+def main():
+    SIRI = 0
+    FB = 0
+    BBRY = 0
+    MU = 0
+    MSFT = 0
+    QQQ = 0
+    MNKD = 0
+    CSCO = 0
+    INTC = 0
+    EXEL = 0
+    SIRI_price = 3.20
+    FB_price = 60.80
+    BBRY_price = 8.19
+    MU_price = 23.54
+    MSFT_price = 41.31
+    QQQ_price = 87.99
+    MNKD_price = 4.09
+    CSCO_price = 22.62
+    INTC_price = 25.98
+    EXEL_price = 3.60
+    personal_finances = 10000.00
+    total_stocks_owned = 0
+    for week in range(1, 21):
+        choice = False
+        while choice is not True:
+            print()
+            print("Week", week)
+            show_financial_information(personal_finances, total_stocks_owned, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, SIRI_price, FB_price, BBRY_price, MU_price, MSFT_price, QQQ_price, MNKD_price, CSCO_price, INTC_price, EXEL_price)
+            show_option_menu()
+            option = menu_options()
+            if option == 1:
+                personal_finances, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, total_stocks_owned = buy_stock(personal_finances, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, total_stocks_owned, SIRI_price, FB_price, BBRY_price, MU_price, MSFT_price, QQQ_price, MNKD_price, CSCO_price, INTC_price, EXEL_price)
+            elif option == 2:
+                personal_finances, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, total_stocks_owned = sell_stock(personal_finances, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, total_stocks_owned, SIRI_price, FB_price, BBRY_price, MU_price, MSFT_price, QQQ_price, MNKD_price, CSCO_price, INTC_price, EXEL_price)
+            elif option == 3:
+                choice = True
+            else:
+                print("Invalid Input")
+        # Need to implement the functions that will return a new value.
+        SIRI_price = 
+        FB_price = 
+        BBRY_price = 
+        MU_price = 
+        MSFT_price = 
+        QQQ_price = 
+        MNKD_price =
+        CSCO_price = 
+        INTC_price = 
+        EXEL_price = 
+    game_over(personal_finances, total_stocks_owned, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL)
+
+def game_over(personal_finances, total_stocks_owned, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL):
+    print("------------------------------------------------------------------------")
+    print("Game Over")
+    print("Over the course of this simulation,")
+    if personal_finances < 10000.00:
+        print("you lost $", (10000.00 - personal_finances))
+    elif personal_finances > 10000.00:
+        print("you earned $", (personal_finances - 10000.00))
+    else:
+        print("you earned absolutely nothing ... somehow.")
+    print("By the end of the simulation, you owned", total_stocks_owned, "stocks.")
+    print("SIRI Stock:", SIRI, "\t\tFB Stock:", FB)
+    print("BBRY Stock:", BBRY, "\t\tMU Stock:", MU)
+    print("MSFT Stock:", MSFT, "\t\tQQQ Stock:", QQQ)
+    print("MNKD Stock:", MNKD, "\t\tCSCO Stock:", CSCO)
+    print("INTC Stock:", INTC, "\t\tEXEL Stock:", EXEL)
+    print("------------------------------------------------------------------------")
+    
+    
+def show_financial_information(personal_finances, total_stocks_owned, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, SIRI_price, FB_price, BBRY_price, MU_price, MSFT_price, QQQ_price, MNKD_price, CSCO_price, INTC_price, EXEL_price ):
+    print("--------------------------------------------------------------------------------")
+    print("Personal Finances: $", "{0: .2f}".format(personal_finances), "\t\tTotal Stocks Currently Owned:", total_stocks_owned)
+    print("")
+    print("SIRI Stock:", SIRI, "\t\tFB Stock:", FB)
+    print("BBRY Stock:", BBRY, "\t\tMU Stock:", MU)
+    print("MSFT Stock:", MSFT, "\t\tQQQ Stock:", QQQ)
+    print("MNKD Stock:", MNKD, "\t\tCSCO Stock:", CSCO)
+    print("INTC Stock:", INTC, "\t\tEXEL Stock:", EXEL)
+    print("")
+    print("SIRI Price: $", "{0: .2f}".format(SIRI_price), "\t\tFB Price: $", "{0: .2f}".format(FB_price))
+    print("BBRY Price: $", "{0: .2f}".format(BBRY_price), "\t\tMU Price: $", "{0: .2f}".format(MU_price))
+    print("MSFT Price: $", "{0: .2f}".format(MSFT_price), "\t\tQQQ Price: $", "{0: .2f}".format(QQQ_price))
+    print("MNKD Price: $", "{0: .2f}".format(MNKD_price), "\t\tCSCO Price: $", "{0: .2f}".format(CSCO_price))
+    print("INTC Price: $", "{0: .2f}".format(INTC_price), "\t\tEXEL Price: $", "{0: .2f}".format(EXEL_price))
+    print("-------------------------------------------------------------------------------")
+
+
+def show_option_menu():
+    print("Please choose from the following options:")
+    print("Option 1) Buy Stock")
+    print("Option 2) Sell Stock")
+    print("Option 3) End Week")
+
+def menu_options():
+    chosen_option = int(input("Your choice: "))
+    return chosen_option
+
+def buy_stock(personal_finances, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, total_stocks_owned, SIRI_price, FB_price, BBRY_price, MU_price, MSFT_price, QQQ_price, MNKD_price, CSCO_price, INTC_price, EXEL_price):
+    go_back = False
+    SIRI_stock_option = str(1)
+    FB_stock_option = str(2)
+    BBRY_stock_option = str(3)
+    MU_stock_option = str(4)
+    MSFT_stock_option = str(5)
+    QQQ_stock_option = str(6)
+    MNKD_stock_option = str(7)
+    CSCO_stock_option = str(8)
+    INTC_stock_option = str(9)
+    EXEL_stock_option = str(10)
+    quit_option = str(11)
+    while go_back == False:
+        show_financial_information(personal_finances, total_stocks_owned, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, SIRI_price, FB_price, BBRY_price, MU_price, MSFT_price, QQQ_price, MNKD_price, CSCO_price, INTC_price, EXEL_price)
+        print("What stock would you like to buy?")
+        print("1) SIRI Stock")
+        print("2) FB Stock")
+        print("3) BBRY Stock")
+        print("4) MU Stock")
+        print("5) MSFT Stock")
+        print("6) QQQ Stock")
+        print("7) MNKD Stock")
+        print("8) CSCO Stock")
+        print("9) INTC Stock")
+        print("10) EXEL Stock")
+        print("11) Go back to main menu.")
+        stock_choice = input("Your choice: ")
+        if stock_choice == SIRI_stock_option:
+            amount_wanted = int(input("How much of SIRI do you want to buy: "))
+            if (amount_wanted * SIRI_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, SIRI, total_stocks_owned = buySIRI(amount_wanted, personal_finances, SIRI, total_stocks_owned, SIRI_price)
+
+        elif stock_choice == FB_stock_option:
+            amount_wanted = int(input("How much of FB do you want to buy: "))
+            if (amount_wanted * FB_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, FB, total_stocks_owned = buyFB(amount_wanted, personal_finances, FB, total_stocks_owned, FB_price)
+
+        elif stock_choice == BBRY_stock_option:
+            amount_wanted = int(input("How much of BBRY do you want to buy: "))
+            if (amount_wanted * BBRY_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, BBRY, total_stocks_owned = buyBBRY(amount_wanted, personal_finances, BBRY, total_stocks_owned, BBRY_price)
+
+        elif stock_choice == MU_stock_option:
+            amount_wanted = int(input("How much of MU do you want to buy: "))
+            if (amount_wanted * MU_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, MU, total_stocks_owned = buyMU(amount_wanted, personal_finances, MU, total_stocks_owned, MU_price)
+
+        elif stock_choice == MSFT_stock_option:
+            amount_wanted = int(input("How much of MSFT do you want to buy: "))
+            if (amount_wanted * MSFT_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, MSFT, total_stocks_owned = buyMSFT(amount_wanted, personal_finances, MSFT, total_stocks_owned, MSFT_price)
+
+        elif stock_choice == QQQ_stock_option:
+            amount_wanted = int(input("How much of QQQ do you want to buy: "))
+            if (amount_wanted * QQQ_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, QQQ, total_stocks_owned = buyQQQ(amount_wanted, personal_finances, QQQ, total_stocks_owned, QQQ_price)
+
+        elif stock_choice == MNKD_stock_option:
+            amount_wanted = int(input("How much of MNKD do you want to buy: "))
+            if (amount_wanted * MNKD_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, MNKD, total_stocks_owned = buyMNKD(amount_wanted, personal_finances, MNKD, total_stocks_owned, MNKD_price)
+
+        elif stock_choice == CSCO_stock_option:
+            amount_wanted = int(input("How much of CSCO do you want to buy: "))
+            if (amount_wanted * CSCO_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, CSCO, total_stocks_owned = buyCSCO(amount_wanted, personal_finances, CSCO, total_stocks_owned, CSCO_price)
+
+        elif stock_choice == INTC_stock_option:
+            amount_wanted = int(input("How much of INTC do you want to buy: "))
+            if (amount_wanted * INTC_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, INTC, total_stocks_owned = buyINTC(amount_wanted, personal_finances, INTC, total_stocks_owned, INTC_price)
+
+        elif stock_choice == EXEL_stock_option:
+            amount_wanted = int(input("How much of EXEL do you want to buy: "))
+            if (amount_wanted * EXEL_price) > personal_finances:
+                print("Insufficient Funds")
+            else:
+                personal_finances, EXEL, total_stocks_owned = buyEXEL(amount_wanted, personal_finances, EXEL, total_stocks_owned, EXEL_price)
+
+        elif stock_choice == quit_option:
+            go_back = True
+
+        else:
+            print("Invalid Input")
+    return personal_finances, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, total_stocks_owned
+            
+def sell_stock(personal_finances, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, total_stocks_owned, SIRI_price, FB_price, BBRY_price, MU_price, MSFT_price, QQQ_price, MNKD_price, CSCO_price, INTC_price, EXEL_price):
+    go_back = False
+    SIRI_stock_option = str(1)
+    FB_stock_option = str(2)
+    BBRY_stock_option = str(3)
+    MU_stock_option = str(4)
+    MSFT_stock_option = str(5)
+    QQQ_stock_option = str(6)
+    MNKD_stock_option = str(7)
+    CSCO_stock_option = str(8)
+    INTC_stock_option = str(9)
+    EXEL_stock_option = str(10)
+    quit_option = str(11)
+    while go_back == False:
+        show_financial_information(personal_finances, total_stocks_owned, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, SIRI_price, FB_price, BBRY_price, MU_price, MSFT_price, QQQ_price, MNKD_price, CSCO_price, INTC_price, EXEL_price)
+        print("What stock would you like to sell?")
+        print("1) SIRI Stock")
+        print("2) FB Stock")
+        print("3) BBRY Stock")
+        print("4) MU Stock")
+        print("5) MSFT Stock")
+        print("6) QQQ Stock")
+        print("7) MNKD Stock")
+        print("8) CSCO Stock")
+        print("9) INTC Stock")
+        print("10) EXEL Stock")
+        print("11) Go back to main menu.")
+        stock_choice = input("Your choice: ")
+        if stock_choice == SIRI_stock_option:
+            amount_wanted = int(input("How much of SIRI do you want to sell: "))
+            if amount_wanted > SIRI:
+                print("That's more than you own.")
+            else:
+                personal_finances, SIRI, total_stocks_owned = sellSIRI(amount_wanted, personal_finances, SIRI, total_stocks_owned, SIRI_price)
+
+        elif stock_choice == FB_stock_option:
+            amount_wanted = int(input("How much of FB do you want to sell: "))
+            if amount_wanted > FB:
+                print("That's more than you own.")
+            else:
+                personal_finances, FB, total_stocks_owned = sellFB(amount_wanted, personal_finances, FB, total_stocks_owned, FB_price)
+
+        elif stock_choice == BBRY_stock_option:
+            amount_wanted = int(input("How much of BBRY do you want to sell: "))
+            if amount_wanted > BBRY:
+                print("That's more than you own.")
+            else:
+                personal_finances, BBRY, total_stocks_owned = sellBBRY(amount_wanted, personal_finances, BBRY, total_stocks_owned, BBRY_price)
+
+        elif stock_choice == MU_stock_option:
+            amount_wanted = int(input("How much of MU do you want to sell: "))
+            if amount_wanted > MU:
+                print("That's more than you own.")
+            else:
+                personal_finances, MU, total_stocks_owned = sellMU(amount_wanted, personal_finances, MU, total_stocks_owned, MU_price)
+
+        elif stock_choice == MSFT_stock_option:
+            amount_wanted = int(input("How much of MSFT do you want to sell: "))
+            if amount_wanted > MSFT:
+                print("That's more than you own.")
+            else:
+                personal_finances, MSFT, total_stocks_owned = sellMSFT(amount_wanted, personal_finances, MSFT, total_stocks_owned, MSFT_price)
+
+        elif stock_choice == QQQ_stock_option:
+            amount_wanted = int(input("How much of QQQ do you want to sell: "))
+            if amount_wanted > QQQ:
+                print("That's more than you own.")
+            else:
+                personal_finances, QQQ, total_stocks_owned = sellQQQ(amount_wanted, personal_finances, QQQ, total_stocks_owned, QQQ_price)
+
+        elif stock_choice == MNKD_stock_option:
+            amount_wanted = int(input("How much of MNKD do you want to sell: "))
+            if amount_wanted > MNKD:
+                print("That's more than you own.")
+            else:
+                personal_finances, MNKD, total_stocks_owned = sellMNKD(amount_wanted, personal_finances, MNKD, total_stocks_owned, MNKD_price)
+
+        elif stock_choice == CSCO_stock_option:
+            amount_wanted = int(input("How much of CSCO do you want to sell: "))
+            if amount_wanted > CSCO:
+                print("That's more than you own.")
+            else:
+                personal_finances, CSCO, total_stocks_owned = sellCSCO(amount_wanted, personal_finances, CSCO, total_stocks_owned, CSCO_price)
+
+        elif stock_choice == INTC_stock_option:
+            amount_wanted = int(input("How much of INTC do you want to sell: "))
+            if amount_wanted > INTC:
+                print("That's more than you own.")
+            else:
+                personal_finances, INTC, total_stocks_owned = sellINTC(amount_wanted, personal_finances, INTC, total_stocks_owned, INTC_price)
+
+        elif stock_choice == EXEL_stock_option:
+            amount_wanted = int(input("How much of EXEL do you want to sell: "))
+            if amount_wanted > EXEL:
+                print("That's more than you own.")
+            else:
+                personal_finances, EXEL, total_stocks_owned = sellEXEL(amount_wanted, personal_finances, EXEL, total_stocks_owned, EXEL_price)
+
+        elif stock_choice == quit_option:
+            go_back = True
+
+        else:
+            print("Invalid Input")
+    return personal_finances, SIRI, FB, BBRY, MU, MSFT, QQQ, MNKD, CSCO, INTC, EXEL, total_stocks_owned
+
+def buySIRI(amount_wanted, personal_finances, SIRI, total_stocks_owned, SIRI_price):
+        SIRI += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * SIRI_price)
+        return personal_finances, SIRI, total_stocks_owned
+    
+def buyFB(amount_wanted, personal_finances, FB, total_stocks_owned, FB_price):
+        FB += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * FB_price)
+        return personal_finances, FB, total_stocks_owned
+    
+def buyBBRY(amount_wanted, personal_finances, BBRY, total_stocks_owned, BBRY_price):
+        BBRY += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * BBRY_price)
+        return personal_finances, BBRY, total_stocks_owned
+    
+def buyMU(amount_wanted, personal_finances, MU, total_stocks_owned, MU_price):
+        MU += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * MU_price)
+        return personal_finances, MU, total_stocks_owned
+    
+def buyMSFT(amount_wanted, personal_finances, MSFT, total_stocks_owned, MSFT_price):
+        MSFT += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * MSFT_price)
+        return personal_finances, MSFT, total_stocks_owned
+    
+def buyQQQ(amount_wanted, personal_finances, QQQ, total_stocks_owned, QQQ_price):
+        QQQ += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * QQQ_price)
+        return personal_finances, QQQ, total_stocks_owned
+    
+def buyMNKD(amount_wanted, personal_finances, MNKD, total_stocks_owned, MNKD_price):
+        MNKD += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * MNKD_price)
+        return personal_finances, MNKD, total_stocks_owned
+    
+def buyCSCO(amount_wanted, personal_finances, CSCO, total_stocks_owned, CSCO_price):
+        CSCO += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * CSCO_price)
+        return personal_finances, CSCO, total_stocks_owned
+    
+def buyINTC(amount_wanted, personal_finances, INTC, total_stocks_owned, INTC_price):
+        INTC += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * INTC_price)
+        return personal_finances, INTC, total_stocks_owned
+    
+def buyEXEL(amount_wanted, personal_finances, EXEL, total_stocks_owned, EXEL_price):
+        EXEL += amount_wanted
+        total_stocks_owned += amount_wanted
+        personal_finances -= (amount_wanted * EXEL_price)
+        return personal_finances, EXEL, total_stocks_owned
+    
+def sellSIRI(amount_wanted, personal_finances, SIRI, total_stocks_owned, SIRI_price):
+        SIRI -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * SIRI_price)
+        return personal_finances, SIRI, total_stocks_owned
+    
+def sellFB(amount_wanted, personal_finances, FB, total_stocks_owned, FB_price):
+        FB -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * FB_price)
+        return personal_finances, FB, total_stocks_owned
+    
+def sellBBRY(amount_wanted, personal_finances, BBRY, total_stocks_owned, BBRY_price):
+        BBRY -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * BBRY_price)
+        return personal_finances, BBRY, total_stocks_owned
+    
+def sellMU(amount_wanted, personal_finances, MU, total_stocks_owned, MU_price):
+        MU -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * MU_price)
+        return personal_finances, MU, total_stocks_owned
+    
+def sellMSFT(amount_wanted, personal_finances, MSFT, total_stocks_owned, MSFT_price):
+        MSFT -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * MSFT_price)
+        return personal_finances, MSFT, total_stocks_owned
+    
+def sellQQQ(amount_wanted, personal_finances, QQQ, total_stocks_owned, QQQ_price):
+        QQQ -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * QQQ_price)
+        return personal_finances, QQQ, total_stocks_owned
+    
+def sellMNKD(amount_wanted, personal_finances, MNKD, total_stocks_owned, MNKD_price):
+        MNKD -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * MNKD_price)
+        return personal_finances, MNKD, total_stocks_owned
+    
+def sellCSCO(amount_wanted, personal_finances, CSCO, total_stocks_owned, CSCO_price):
+        CSCO -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * CSCO_price)
+        return personal_finances, CSCO, total_stocks_owned
+
+def sellINTC(amount_wanted, personal_finances, INTC, total_stocks_owned, INTC_price):
+        INTC -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * INTC_price)
+        return personal_finances, INTC, total_stocks_owned
+    
+def sellEXEL(amount_wanted, personal_finances, EXEL, total_stocks_owned, EXEL_price):
+        EXEL -= amount_wanted
+        total_stocks_owned -= amount_wanted
+        personal_finances += (amount_wanted * EXEL_price)
+        return personal_finances, EXEL, total_stocks_owned
+
+main()
